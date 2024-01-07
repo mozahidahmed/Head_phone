@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
@@ -421,6 +424,11 @@ img {
   border-radius: .5rem;
   display: grid;
 }
+
+.sign_card{
+  background-color: var(--container-color);
+}
+
 
 .products__img {
   width: 80px;

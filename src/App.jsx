@@ -1,30 +1,27 @@
 
-
 import './App.css'
-import Case from './components/Case';
-import Company from './components/Company';
-import Hero from './components/Hero';
 import Navbar from './components/Nabar';
-import Product from './components/Product';
-import ShopNow from './components/ShopNow';
-import Specs from './components/Specs';
-import Footer from './components/Footer';
+
+import { Route, Routes } from 'react-router-dom';
+import SignIn from './components/function/Authentication/SignIn';
+import Home from './components/Home';
+import SignUp from './components/function/Authentication/SignUp';
 
 function App() {
 
 
   return (
-   <div className="">
-    <Navbar/>
-    <Hero/>
-    <Company/>
-    <Specs/>
-    <Case/>
-    <ShopNow/>
-    <Product/>
-    <Footer/>
-   </div>
-  )
+    <div className="">
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/signIn" element={<SignIn />}></Route>
+        <Route path="/signUp" element={<SignUp />}></Route>
+      </Routes>
+      <Navbar />
+
+     
+    </div>
+  );
 }
 
 export default App
