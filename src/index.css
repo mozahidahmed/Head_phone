@@ -428,6 +428,9 @@ img {
 .sign_card{
   background-color: var(--container-color);
 }
+.bg{
+  background-color: var(--container-color);
+}
 
 
 .products__img {
@@ -589,6 +592,7 @@ img {
   .container {
     margin-left: var(--mb-1);
     margin-right: var(--mb-1);
+    width: 600;
   }
 
   .section__title {
