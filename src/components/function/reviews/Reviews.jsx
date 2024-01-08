@@ -17,7 +17,7 @@ const Reviews = () => {
             People <br /> Saw
           </h2>
           <div className="grid lg:grid-cols-3 gap-5 justify-center container ">
-            {data.map((data) => (
+            {data.slice(0,3).map((data) => (
               <>
                 <div className="bg p-5 rounded-xl">
                   <h1 className="font-bold">{data?.name}</h1>

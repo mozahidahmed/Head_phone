@@ -17,7 +17,7 @@ const Products = () => {
         </h2>
 
         <div className="products__container container grid">
-          {data.map((product) => (
+          {data.slice(0,6).map((product) => (
             <ProductCard key={product._id} product={product}></ProductCard>
           ))}
         </div>

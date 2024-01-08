@@ -26,8 +26,8 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li className="nav__item">
-                  <a href="#specs" className="nav__link active-link">
-                    Specs
+                  <a href="/products" className="nav__link active-link">
+                    Products
                   </a>
                 </li>
                 <li className="nav__item">
