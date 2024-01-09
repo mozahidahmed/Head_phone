@@ -13,7 +13,7 @@ const ShopNow = () => {
               <p className="discount__description">
                 Get it now, up to 50% off.
               </p>
-              <a href="#" className="button button--flex">
+              <a href="products" className="button button--flex">
                 <i className="ri-shopping-bag-line button__icon"></i> Shop Now
               </a>
             </div>

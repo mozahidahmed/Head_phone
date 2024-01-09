@@ -1,10 +1,12 @@
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from './../../../firebase.init';
+import Loading from "../loading/Loading";
+
 
 const SignIn = () => {
   //firebase hooks function
-  const [signInWithEmailAndPassword, user] =
+  const [signInWithEmailAndPassword, user,loading] =
     useSignInWithEmailAndPassword(auth);
 
   // submit login data
@@ -15,11 +17,10 @@ const SignIn = () => {
     //send data
     signInWithEmailAndPassword(email, password);
   };
+ 
 
   //success navigate
   const navigate = useNavigate();
-
- 
   if (user) {
     navigate("/");
   }

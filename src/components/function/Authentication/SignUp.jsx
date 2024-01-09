@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 
+
 const SignUp = () => {
   // firebase hooks data
   const [createUserWithEmailAndPassword, user] =
@@ -19,6 +20,7 @@ const SignUp = () => {
 
   //success navigate
   const navigate = useNavigate();
+  
  
   if (user) {
     navigate("/");

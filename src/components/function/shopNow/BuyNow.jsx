@@ -40,7 +40,7 @@ const BuyNow = () => {
      
         const order = {
        name:event.target.name.value,
-       userMail:user?.email,
+       email:user?.email,
        productName:product?.name,
        productSinglePrice:product?.price,
        productImg:product?.img,
