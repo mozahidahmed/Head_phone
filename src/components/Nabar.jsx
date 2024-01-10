@@ -32,7 +32,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav__item">
                   <a href="#case" className="nav__link active-link">
-                    Case
+                    Blogs
                   </a>
                 </li>
 
@@ -44,8 +44,8 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li  className="nav__item">
-                      <a href="/dashboard" className="nav__link active-link">
-                        Dashboard
+                      <a href="/profile" className="nav__link active-link">
+                        Profile
                       </a>
                     </li>
                   </>

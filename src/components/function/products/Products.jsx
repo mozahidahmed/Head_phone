@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import Loading from "../loading/Loading";
+import { useQuery } from "react-query";
 
 const Products = () => {
-  const [data, setData] = useState([]);
+  
 
-  useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+
+    const { data, isLoading } = useQuery("services", () =>
+      fetch("http://localhost:5000/products", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }).then((res) => res.json())
+    );
+    if (isLoading) {
+      return <Loading></Loading>;
+    }
+
   return (
     <div>
       <section className="products section" id="products">
@@ -17,7 +27,7 @@ const Products = () => {
         </h2>
 
         <div className="products__container container grid">
-          {data.slice(0,6).map((product) => (
+          {data?.slice(0, 6).map((product) => (
             <ProductCard key={product._id} product={product}></ProductCard>
           ))}
         </div>

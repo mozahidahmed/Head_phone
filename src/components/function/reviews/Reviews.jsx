@@ -1,15 +1,24 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Loading from './../loading/Loading';
+import { useQuery } from 'react-query';
 
 const Reviews = () => {
-     const [data, setData] = useState([]);
+    
 
-     useEffect(() => {
-       fetch("http://localhost:5000/reviews")
-         .then((res) => res.json())
-         .then((data) => setData(data));
-     }, []);
+     
+    const { data, isLoading } = useQuery("reviews", () =>
+      fetch("http://localhost:5000/reviews", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }).then((res) => res.json())
+    );
+    if (isLoading) {
+      return <Loading></Loading>;
+    }
     return (
       <div>
         <section className=" py-24 ">

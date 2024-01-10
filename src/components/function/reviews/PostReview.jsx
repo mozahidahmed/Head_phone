@@ -31,7 +31,10 @@ const PostReview = () => {
       };   
     return (
       <div>
-        <form onSubmit={handleReview} className="discount section">
+        <h2 className="section__title section__title-gradient py-16">
+          Add Reviews <br />
+        </h2>
+        <form onSubmit={handleReview} className="">
           <div className="container bg p-5">
             <input
               type="name"

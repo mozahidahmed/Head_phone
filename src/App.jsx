@@ -12,6 +12,11 @@ import WelcomeForOrder from './components/function/welcome/WelcomeForOrder';
 import MyOrder from './components/function/myorder/MyOrder';
 import PostReview from './components/function/reviews/PostReview';
 import ThanksForReview from './components/function/reviews/ThanksForReview';
+import AddProduct from './components/function/addproduct/AddProduct';
+import SuccessFullyAdded from './components/function/addproduct/SuccessFullyAdded';
+import ManageProducts from './components/function/manageproducts/ManageProducts';
+import AllProducts from './components/function/allproducts/AllProducts';
+import MyProfile from './components/function/myprofile/MyProfile';
 
 
 function App() {
@@ -21,9 +26,13 @@ function App() {
     <div className="">
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/products" element={<Products />}></Route>
+        <Route path="/products" element={<AllProducts />}></Route>
+        <Route path="/manageproducts" element={<ManageProducts />}></Route>
         <Route path="/myorder" element={<MyOrder />}></Route>
         <Route path="/addreview" element={<PostReview />}></Route>
+        <Route path="/profile" element={<MyProfile />}></Route>
+        <Route path="/addproduct" element={<AddProduct />}></Route>
+        <Route path="/successfullyAdded" element={<SuccessFullyAdded />}></Route>
         <Route path="/thanksforreview" element={<ThanksForReview />}></Route>
         <Route path="/welcome" element={<WelcomeForOrder />}></Route>
         <Route path="/signIn" element={<SignIn />}></Route>
@@ -31,8 +40,6 @@ function App() {
         <Route path="/signUp" element={<SignUp />}></Route>
       </Routes>
       <Navbar />
-
-     
     </div>
   );
 }
