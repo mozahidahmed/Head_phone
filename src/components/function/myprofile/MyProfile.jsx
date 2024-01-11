@@ -4,9 +4,14 @@ import auth from '../../../firebase.init';
 import { MdOutlineRateReview } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
 import { GrUpdate } from "react-icons/gr";
+import { Link } from 'react-router-dom';
+import useAdmin from './../../../hooks/useAdmin';
 
 const MyProfile = () => {
-    const [user]=useAuthState(auth)
+    const [user]=useAuthState(auth);
+    const [admin] = useAdmin(user);
+    
+    
     return (
       <div className="py-16">
         <h2 className="section__title section__title-gradient products__line">
@@ -26,35 +31,43 @@ const MyProfile = () => {
             <h1 className="text-2xl">Waiting</h1>
             <h1 className="text-2xl">For Your Review </h1>
             <p className="py-2">Help me with your review </p>
-            <a href="/addreview" className="button button--flex text-xl">
+            <Link to="/addreview" className="button button--flex text-xl">
               <MdOutlineRateReview /> Review Now
-            </a>
+            </Link>
           </div>
 
           <div className="bg p-5 rounded-xl">
             <h1 className="text-2xl">Explore</h1>
             <h1 className="text-2xl"> Your Order </h1>
             <p className="py-2">Happy Shoping</p>
-            <a href="/myorder" className="button button--flex text-xl">
+            <Link to="/myorder" className="button button--flex text-xl">
               <LuShoppingCart /> Your Cart
-            </a>
+            </Link>
           </div>
-          <div className="bg p-5 rounded-xl">
-            <h1 className="text-2xl">Explore</h1>
-            <h1 className="text-2xl"> Manage Products </h1>
-            <p className="py-2">Happy Shoping</p>
-            <a href="/manageproducts" className="button button--flex text-xl">
-              <GrUpdate /> Manage Products
-            </a>
-          </div>
-          <div className="bg p-5 rounded-xl">
-            <h1 className="text-2xl">Explore</h1>
-            <h1 className="text-2xl"> Make Admin </h1>
-            <p className="py-2">Happy Shoping</p>
-            <a href="/users" className="button button--flex text-xl">
-              <GrUpdate /> Manage Products
-            </a>
-          </div>
+
+          { admin && (
+            <>
+              <div className="bg p-5 rounded-xl">
+                <h1 className="text-2xl">Explore</h1>
+                <h1 className="text-2xl"> Make Admin </h1>
+                <p className="py-2">Happy Shoping</p>
+                <Link to="/users" className="button button--flex text-xl">
+                  <GrUpdate /> Manage Products
+                </Link>
+              </div>
+              <div className="bg p-5 rounded-xl">
+                <h1 className="text-2xl">Explore</h1>
+                <h1 className="text-2xl"> Manage Products </h1>
+                <p className="py-2">Happy Shoping</p>
+                <Link
+                  to="/manageproducts"
+                  className="button button--flex text-xl"
+                >
+                  <GrUpdate /> Manage Products
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     );

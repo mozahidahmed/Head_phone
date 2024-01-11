@@ -1,12 +1,12 @@
-
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
-
+import useToken from "../../../hooks/useToken";
+import Loading from "../loading/Loading";
 
 const SignUp = () => {
   // firebase hooks data
-  const [createUserWithEmailAndPassword, user] =
+  const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   //handle from
@@ -17,13 +17,14 @@ const SignUp = () => {
     //send data
     createUserWithEmailAndPassword(email, password);
   };
-
+  
+  
+  
   //success navigate
   const navigate = useNavigate();
-  
- 
-  if (user) {
-    navigate("/");
+  const [token] = useToken(user);
+  if (token) {
+   navigate('/');
   }
 
   return (
@@ -77,21 +78,21 @@ const SignUp = () => {
                     required=""
                   />
                 </div>
-
+            
                 <input
                   type="submit"
                   value="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300  bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                  className="w-full bg-[#56d156] text-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300   font-bold rounded-lg text-sm px-5 py-2.5 text-center "
                 />
 
                 <p className="">
                   Don’t have an account yet?{" "}
-                  <a
-                    href="/signin"
+                  <Link
+                    to="/signin"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign in
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

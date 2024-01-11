@@ -2,6 +2,7 @@ import img from '../assets/logo.png'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import auth from '../firebase.init';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
@@ -14,46 +15,40 @@ const Navbar = () => {
       <div className="navbar_bg">
         <header className="header" id="header">
           <nav className="nav container">
-            <a href="#" className="nav__logo">
+            <p  className="nav__logo">
               <img src={img} alt="" />
-            </a>
+            </p>
 
             <div className="nav__menu" id="nav-menu">
               <ul className="nav__list">
+                <Link to="/" className="nav__item">
+                  <p className="nav__link active-link">Home</p>
+                </Link>
+                <Link to="/products" className="nav__item">
+                  <p className="nav__link active-link">Products</p>
+                </Link>
                 <li className="nav__item">
-                  <a href="/" className="nav__link active-link">
-                    Home
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="/products" className="nav__link active-link">
-                    Products
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="#case" className="nav__link active-link">
+                  <p href="#case" className="nav__link active-link">
                     Blogs
-                  </a>
+                  </p>
                 </li>
 
                 {user ? (
                   <>
                     <li onClick={logout} className="nav__item">
-                      <a href="/signIn" className="nav__link active-link">
+                      <Link to="/signIn" className="nav__link active-link">
                         LogOut
-                      </a>
+                      </Link>
                     </li>
-                    <li  className="nav__item">
-                      <a href="/profile" className="nav__link active-link">
-                        Profile
-                      </a>
-                    </li>
+                    <Link to="/profile" className="nav__item">
+                      <p className="nav__link active-link">Profile</p>
+                    </Link>
                   </>
                 ) : (
                   <li className="nav__item">
-                    <a href="/signIn" className="nav__link active-link">
+                    <Link to="/signIn" className="nav__link active-link">
                       Login
-                    </a>
+                    </Link>
                   </li>
                 )}
               </ul>

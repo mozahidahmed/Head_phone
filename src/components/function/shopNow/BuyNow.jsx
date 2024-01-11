@@ -7,7 +7,7 @@ const BuyNow = () => {
   const [user] = useAuthState(auth);
   const { id } = useParams();
   const [product, setProduct] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
 
   //fetch single data
@@ -38,7 +38,7 @@ const BuyNow = () => {
       event.preventDefault();
        
      
-        const order = {
+       const order = {
        name:event.target.name.value,
        email:user?.email,
        productName:product?.name,
@@ -47,7 +47,8 @@ const BuyNow = () => {
        productPrice:quantity*product.price,
        number : event.target.number.value,
        address : event.target.address.value,
-       pquantity : event.target.pquantity.value
+       pquantity : event.target.pquantity.value,
+       paymentmethod : event.target.paymentmethod.value
         };
 
      
@@ -64,6 +65,7 @@ const BuyNow = () => {
           console.log(data);
           if (data.acknowledged) {
             navigate("/welcome");
+            console.log(data);
           }
         });
     
@@ -100,7 +102,9 @@ const BuyNow = () => {
                   value={quantity}
                   className="bg  w-12 rounded-xl text-center "
                 />
-                <h6 onClick={handleIncrement}>+</h6>
+                <h6 required onClick={handleIncrement}>
+                  +
+                </h6>
               </div>
 
               <p className="text-xl">
@@ -151,7 +155,21 @@ const BuyNow = () => {
             placeholder="Write full address"
             required
           />
-          <button type="submit" className="hover:bg-[#ff33cc] button button--flex mt-2">
+           <p className="mt-4">Choose Payment_Method</p>
+          <select
+            id="countries"
+            name="paymentmethod"
+            class="bg border  text-sm rounded-lg   block w-full p-2.5    border-black mt-2 bg"
+          required
+          >
+            <option selected>Cash</option>
+            <option selected>Online</option>
+          </select>
+
+          <button
+            type="submit"
+            className="hover:bg-[#ff33cc] button button--flex mt-2"
+          >
             <i className="ri-shopping-bag-line button__icon"></i> Shop Now
           </button>
         </div>

@@ -23,7 +23,7 @@ const Reviews = () => {
       <div>
         <section className=" py-24 ">
           <h2 className="section__title section__title-gradient products__line">
-            People <br /> Saw
+            People <br /> Said
           </h2>
           <div className="grid lg:grid-cols-3 gap-5 justify-center container ">
             {data.slice(0,3).map((data) => (

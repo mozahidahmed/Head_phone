@@ -1,12 +1,13 @@
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from './../../../firebase.init';
 import Loading from "../loading/Loading";
+import useToken from './../../../hooks/useToken';
 
 
 const SignIn = () => {
   //firebase hooks function
-  const [signInWithEmailAndPassword, user,loading] =
+  const [signInWithEmailAndPassword, user,loading,error] =
     useSignInWithEmailAndPassword(auth);
 
   // submit login data
@@ -17,14 +18,20 @@ const SignIn = () => {
     //send data
     signInWithEmailAndPassword(email, password);
   };
- 
-
+ let signInError;
+if (error) {
+  signInError = <p>Check User Name Or Password</p>;
+}
   //success navigate
+  const [token] = useToken(user);
   const navigate = useNavigate();
-  if (user) {
+  if (token) {
     navigate("/");
   }
-
+// 
+if(loading){
+return <Loading/>
+}
   return (
     <div>
       <section className="h-screen py-6 ">
@@ -65,27 +72,24 @@ const SignIn = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-primary-600 hover:underline "
-                  >
-                    Forgot password?
-                  </a>
+                  <p className="text-sm font-medium text-red-500 hover:underline ">
+                    {signInError}
+                  </p>
                 </div>
                 <input
                   type="submit"
                   value="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300  bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                  className="w-full text-black font-bold bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300  bg-[#56d156]  rounded-lg text-sm px-5 py-2.5 text-center "
                 />
 
                 <p className="">
                   Don’t have an account yet?{" "}
-                  <a
-                    href="/signup"
+                  <Link
+                    to="/signup"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign Up
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

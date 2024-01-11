@@ -17,6 +17,9 @@ import SuccessFullyAdded from './components/function/addproduct/SuccessFullyAdde
 import ManageProducts from './components/function/manageproducts/ManageProducts';
 import AllProducts from './components/function/allproducts/AllProducts';
 import MyProfile from './components/function/myprofile/MyProfile';
+import Payment from './components/function/payment/Payment';
+import AllUser from './components/function/Admin/AllUser';
+import RequireAuth from './components/function/Authentication/RequireAuth';
 
 
 function App() {
@@ -28,15 +31,41 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<AllProducts />}></Route>
         <Route path="/manageproducts" element={<ManageProducts />}></Route>
-        <Route path="/myorder" element={<MyOrder />}></Route>
+        <Route
+          path="/myorder"
+          element={
+            <RequireAuth>
+              <MyOrder />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/addreview" element={<PostReview />}></Route>
         <Route path="/profile" element={<MyProfile />}></Route>
-        <Route path="/addproduct" element={<AddProduct />}></Route>
-        <Route path="/successfullyAdded" element={<SuccessFullyAdded />}></Route>
+        <Route
+          path="/addproduct"
+          element={
+            <RequireAuth>
+              <AddProduct />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route path="/users" element={<AllUser />}></Route>
+        <Route
+          path="/successfullyAdded"
+          element={<SuccessFullyAdded />}
+        ></Route>
         <Route path="/thanksforreview" element={<ThanksForReview />}></Route>
+        <Route path="payment/:id" element={<Payment />}></Route>
         <Route path="/welcome" element={<WelcomeForOrder />}></Route>
         <Route path="/signIn" element={<SignIn />}></Route>
-        <Route path="/shopnow/:id" element={<BuyNow />}></Route>
+        <Route
+          path="/shopnow/:id"
+          element={
+            <RequireAuth>
+              <BuyNow />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
       </Routes>
       <Navbar />
