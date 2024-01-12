@@ -25,7 +25,7 @@ const Reviews = () => {
         <h2 className="section__title section__title-gradient products__line">
           People <br /> Said
         </h2>
-        <div className="grid lg:grid-cols-3 gap-5 justify-center container ">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-center container ">
           {data?.map((data) => (
             <>
               <div className="bg p-5 rounded-xl">

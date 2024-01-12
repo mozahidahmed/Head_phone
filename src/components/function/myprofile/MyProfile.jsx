@@ -27,7 +27,7 @@ const MyProfile = () => {
           </h2>
         )}
 
-        <div className="grid lg:grid-cols-3 container gap-5">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 container gap-5">
           <div className="bg p-5 rounded-xl">
             <h1 className="text-2xl">Hi, </h1>
             <h1 className="text-2xl">{user?.email} </h1>
