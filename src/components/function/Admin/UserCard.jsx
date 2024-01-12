@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 import { MdDelete } from "react-icons/md";
-
 
 const UserCard = ({ user, refetch }) => {
   const { email, role, _id } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://mozababa.onrender.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         // 'content-type': 'application/json'
@@ -14,7 +13,6 @@ const UserCard = ({ user, refetch }) => {
     })
       .then((res) => {
         if (res.status === 403) {
-          
         }
 
         return res.json();

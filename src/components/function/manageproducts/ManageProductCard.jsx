@@ -1,26 +1,24 @@
-import React from 'react';
+import React from "react";
 import { MdDelete } from "react-icons/md";
 
 const ManageProductCard = ({ products, refetch }) => {
-  const { name, img, price,_id } = products;
+  const { name, img, price, _id } = products;
 
-
-  
-    const handleDelete=()=>{
-      fetch(`http://localhost:5000/products/${_id}`, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount) {
-            console.log('deleted product');
-            refetch();
-          }
-        });
-    }
+  const handleDelete = () => {
+    fetch(`https://mozababa.onrender.com/products/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          console.log("deleted product");
+          refetch();
+        }
+      });
+  };
   return (
     <div>
       <div className="flex  gap-12 bg p-5 items-center justify-around">

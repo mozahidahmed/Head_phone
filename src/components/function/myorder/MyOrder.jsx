@@ -12,9 +12,10 @@ const MyOrder = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/myorder?email=${user?.email}`, {}).then(
-      (res) => res.json()
-    )
+    fetch(
+      `https://mozababa.onrender.com/myorder?email=${user?.email}`,
+      {}
+    ).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;

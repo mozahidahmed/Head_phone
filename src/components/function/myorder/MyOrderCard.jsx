@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { MdDelete } from "react-icons/md";
 import { MdOutlinePayment } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { PiHandshakeLight } from "react-icons/pi";
 
 const MyOrderCard = ({ order, refetch }) => {
@@ -17,7 +17,7 @@ const MyOrderCard = ({ order, refetch }) => {
   } = order;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/myorder/${_id}`, {
+    fetch(`https://mozababa.onrender.com/myorder/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

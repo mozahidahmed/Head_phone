@@ -8,11 +8,11 @@ const CheckOutForm = ({ product }) => {
   const elements = useElements();
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
-  const [transactionId, setTransactionId] = useState('');
+  const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://mozababa.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -66,31 +66,26 @@ const CheckOutForm = ({ product }) => {
     } else {
       setCardError("");
       console.log(paymentIntent);
-      setTransactionId(paymentIntent.id)
+      setTransactionId(paymentIntent.id);
       setSuccess("Congrats! your payment is success");
-          const payment = {
-            order: _id,
-            transactionId: paymentIntent.id,
-          }; 
-      
-      fetch(`http://localhost:5000/order/${_id}`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(payment),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            setProcessing(false);
-            console.log(data);
-          });
+      const payment = {
+        order: _id,
+        transactionId: paymentIntent.id,
+      };
+
+      fetch(`https://mozababa.onrender.com/order/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
     }
-
-
-
-
-
   };
 
   return (
@@ -125,7 +120,8 @@ const CheckOutForm = ({ product }) => {
         <>
           <p className="text-green-500">{success}</p>
           <p className="text-white">
-            Transaction ID: < span className="text-orange-500" >{transactionId}</span>
+            Transaction ID:{" "}
+            <span className="text-orange-500">{transactionId}</span>
           </p>
         </>
       )}

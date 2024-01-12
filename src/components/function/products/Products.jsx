@@ -4,23 +4,20 @@ import Loading from "../loading/Loading";
 import { useQuery } from "react-query";
 
 const Products = () => {
-  
-
-
-    const { data, isLoading,isError } = useQuery("services", () =>
-      fetch("http://localhost:5000/products", {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      }).then((res) => res.json())
-    );
-    if (isLoading) {
-      return <Loading></Loading>;
-    }
-    if (isError) {
-      console.log('error');
-    }
+  const { data, isLoading, isError } = useQuery("services", () =>
+    fetch("https://mozababa.onrender.com/products", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  if (isError) {
+    console.log("error");
+  }
 
   return (
     <div>
@@ -30,10 +27,9 @@ const Products = () => {
         </h2>
 
         <div className="products__container container grid">
-          {data?.slice(0, 6)
-            .map((product) => (
-              <ProductCard key={product._id} product={product}></ProductCard>
-            ))}
+          {data?.slice(0, 6).map((product) => (
+            <ProductCard key={product._id} product={product}></ProductCard>
+          ))}
         </div>
       </section>
     </div>

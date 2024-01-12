@@ -7,50 +7,44 @@ const AddProduct = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { data: products, isLoading } = useQuery("products", () =>
-    fetch("http://localhost:5000/products")
+    fetch("https://mozababa.onrender.com/products")
   );
 
-const img_key = "580ee4f2433e50615da0337b4c45ad0b";
-const onSubmit =async data=>{
-    const image =data.image[0]
-    const formData=new FormData()
-    formData.append('image',image)
+  const img_key = "580ee4f2433e50615da0337b4c45ad0b";
+  const onSubmit = async (data) => {
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${img_key}`;
-    fetch(url,{
-        method:'POST',
-        body:formData
+    fetch(url, {
+      method: "POST",
+      body: formData,
     })
-    .then(res=>res.json())
-    .then(result=>{
-        
-       if(result.success){
-        const img=result.data.url
-        const product={
-            name:data.name,
-            price:data.price,
-            img:img
-        }
-        fetch("http://localhost:5000/products",{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const product = {
+            name: data.name,
+            price: data.price,
+            img: img,
+          };
+          fetch("https://mozababa.onrender.com/products", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
             },
-            body:JSON.stringify(product)
-
-        })
-        .then(res=>res.json())
-        .then(inserted=>{
-           if(inserted.insertedId){
-            navigate("/successfullyAdded");
-           }
-        })
-       }
-
-       
-    })
-
-    
-}
+            body: JSON.stringify(product),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                navigate("/successfullyAdded");
+              }
+            });
+        }
+      });
+  };
   return (
     <div className="py-16">
       <h2 className="section__title section__title-gradient products__line ">

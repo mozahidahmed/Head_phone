@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 
 const BuyNow = () => {
@@ -9,75 +9,59 @@ const BuyNow = () => {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
 
-
   //fetch single data
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://mozababa.onrender.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
 
-
-  //increment button 
+  //increment button
   const handleIncrement = () => {
     const result = quantity + 1;
     setQuantity(result);
   };
   const handleDecrement = () => {
     const result = quantity - 1;
-    if (result>0){
-   setQuantity(result);
+    if (result > 0) {
+      setQuantity(result);
     }
-     
   };
 
-
   //post order
-    const navigate = useNavigate();
-    const handleOrder = (event) => {
-      event.preventDefault();
-       
-     
-       const order = {
-       name:event.target.name.value,
-       email:user?.email,
-       productName:product?.name,
-       productSinglePrice:product?.price,
-       productImg:product?.img,
-       productPrice:quantity*product.price,
-       number : event.target.number.value,
-       address : event.target.address.value,
-       pquantity : event.target.pquantity.value,
-       paymentmethod : event.target.paymentmethod.value
-        };
+  const navigate = useNavigate();
+  const handleOrder = (event) => {
+    event.preventDefault();
 
-     
-     
-      fetch("http://localhost:5000/order", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(order),
-      })
-        .then((res) => res.json())
-        .then((data) => {
+    const order = {
+      name: event.target.name.value,
+      email: user?.email,
+      productName: product?.name,
+      productSinglePrice: product?.price,
+      productImg: product?.img,
+      productPrice: quantity * product.price,
+      number: event.target.number.value,
+      address: event.target.address.value,
+      pquantity: event.target.pquantity.value,
+      paymentmethod: event.target.paymentmethod.value,
+    };
+
+    fetch("https://mozababa.onrender.com/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          navigate("/welcome");
           console.log(data);
-          if (data.acknowledged) {
-            navigate("/welcome");
-            console.log(data);
-          }
-        });
-    
-   
-
-
-
-    }    
-   
-   
-
-
+        }
+      });
+  };
 
   return (
     <form onSubmit={handleOrder} className="">
@@ -155,12 +139,12 @@ const BuyNow = () => {
             placeholder="Write full address"
             required
           />
-           <p className="mt-4">Choose Payment_Method</p>
+          <p className="mt-4">Choose Payment_Method</p>
           <select
             id="countries"
             name="paymentmethod"
             class="bg border  text-sm rounded-lg   block w-full p-2.5    border-black mt-2 bg"
-          required
+            required
           >
             <option selected>Cash</option>
             <option selected>Online</option>
