@@ -7,24 +7,24 @@ import { useQuery } from "react-query";
 
 const MyOrder = () => {
   const [user] = useAuthState(auth);
- const {
-   data: orders,
-   isLoading,
-   refetch,
- } = useQuery("orders", () =>
-   fetch(`http://localhost:5000/myorder?email=${user?.email}`, {
-   }).then((res) => res.json())
- );
- if (isLoading) {
-   return <Loading></Loading>;
- }
-
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("orders", () =>
+    fetch(`http://localhost:5000/myorder?email=${user?.email}`, {}).then(
+      (res) => res.json()
+    )
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="container h-screen py-16 grid gap-2">
       {orders?.length > 0 ? (
         <>
-          {orders.map((order, index) => (
+          {orders?.map((order, index) => (
             <MyOrderCard order={order} refetch={refetch}></MyOrderCard>
           ))}
         </>

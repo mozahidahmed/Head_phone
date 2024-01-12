@@ -20,6 +20,7 @@ import Payment from "./components/function/payment/Payment";
 import AllUser from "./components/function/Admin/AllUser";
 import RequireAuth from "./components/function/Authentication/RequireAuth";
 import Blogs from "./components/Blogs";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           }
         ></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
       <Navbar />
     </div>

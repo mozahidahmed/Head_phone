@@ -6,6 +6,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { GrUpdate } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 import useAdmin from './../../../hooks/useAdmin';
+import { IoMdAddCircle } from "react-icons/io";
 
 const MyProfile = () => {
     const [user]=useAuthState(auth);
@@ -38,16 +39,21 @@ const MyProfile = () => {
 
           <div className="bg p-5 rounded-xl">
             <h1 className="text-2xl">Waiting</h1>
-            <h1 className="text-2xl">For Your Review </h1>
+            <h1 className="text-2xl">
+              For Your <span className="text-[#56d156] font-bold">Review</span>{" "}
+            </h1>
             <p className="py-2">Help me with your review </p>
-            <Link to="/addreview" className="button button--flex text-xl">
+            <Link to="/addreview" className="button  button--flex text-xl">
               <MdOutlineRateReview /> Review Now
             </Link>
           </div>
 
           <div className="bg p-5 rounded-xl">
             <h1 className="text-2xl">Explore</h1>
-            <h1 className="text-2xl"> Your Order </h1>
+            <h1 className="text-2xl">
+              {" "}
+              Your <span className="text-[#56d156] font-bold">Order</span>{" "}
+            </h1>
             <p className="py-2">Happy Shoping</p>
             <Link to="/myorder" className="button button--flex text-xl">
               <LuShoppingCart /> Your Cart
@@ -58,7 +64,12 @@ const MyProfile = () => {
             <>
               <div className="bg p-5 rounded-xl">
                 <h1 className="text-2xl">Explore</h1>
-                <h1 className="text-2xl"> Make Admin </h1>
+                <h1 className="text-2xl">
+                  {" "}
+                  Make <span className="text-[#56d156] font-bold">
+                    Admin
+                  </span>{" "}
+                </h1>
                 <p className="py-2">Happy Shoping</p>
                 <Link to="/users" className="button button--flex text-xl">
                   <GrUpdate /> Manage User
@@ -66,13 +77,35 @@ const MyProfile = () => {
               </div>
               <div className="bg p-5 rounded-xl">
                 <h1 className="text-2xl">Explore</h1>
-                <h1 className="text-2xl"> Manage Products </h1>
+                <h1 className="text-2xl">
+                  {" "}
+                  Manage{" "}
+                  <span className="text-[#56d156] font-bold">
+                    Products
+                  </span>{" "}
+                </h1>
                 <p className="py-2">Happy Shoping</p>
                 <Link
                   to="/manageproducts"
                   className="button button--flex text-xl"
                 >
                   <GrUpdate /> Manage Products
+                </Link>
+              </div>
+              <div className="bg p-5 rounded-xl">
+                <h1 className="text-2xl">Add</h1>
+                <h1 className="text-2xl">
+                  {" "}
+                  New <span className="text-[#56d156] font-bold">
+                    Products
+                  </span>{" "}
+                </h1>
+                <p className="py-2">Happy Shoping</p>
+                <Link
+                  to="/addproduct"
+                  className="button button--flex text-xl"
+                >
+                  <IoMdAddCircle />  Add Product
                 </Link>
               </div>
             </>

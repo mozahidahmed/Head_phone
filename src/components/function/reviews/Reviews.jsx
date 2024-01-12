@@ -8,7 +8,7 @@ const Reviews = () => {
     
 
      
-    const { data, isLoading } = useQuery("reviews", () =>
+    const { data, isLoading, isError } = useQuery("reviews", () =>
       fetch("http://localhost:5000/reviews", {
         method: "GET",
         headers: {
@@ -19,6 +19,9 @@ const Reviews = () => {
     if (isLoading) {
       return <Loading></Loading>;
     }
+     if (isError) {
+       console.log("error");
+     }
     return (
       <div>
         <section className=" py-24 ">
@@ -26,7 +29,7 @@ const Reviews = () => {
             People <br /> Said
           </h2>
           <div className="grid lg:grid-cols-3 gap-5 justify-center container ">
-            {data.map((data) => (
+            {data?.map((data) => (
               <>
                 <div className="bg p-5 rounded-xl">
                   <h1 className="font-bold">{data?.name}</h1>

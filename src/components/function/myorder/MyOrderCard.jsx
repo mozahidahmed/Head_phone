@@ -60,7 +60,7 @@ const MyOrderCard = ({ order, refetch }) => {
             {paymentmethod == "Online" && (
               <div className=" flex justify-center items-center gap-2">
                 <MdOutlinePayment className="text-[#66ff66] text-4xl"></MdOutlinePayment>
-                <p>Payed</p>
+                <p>Paid</p>
               </div>
             )}
           </>
