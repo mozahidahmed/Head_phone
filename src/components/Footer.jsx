@@ -69,9 +69,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <p className="footer__copy">
-                <a href="" target="_blank" className="footer__copy-link">&#169; MOZAHID 24. All right reserved</a>
-            </p>
+         
         </footer>
         </div>
     );

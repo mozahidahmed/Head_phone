@@ -18,7 +18,10 @@ const SignUp = () => {
     createUserWithEmailAndPassword(email, password);
   };
   
-  
+   let signUpError;
+   if (error) {
+     signUpError = <p>User Already used try another email</p>;
+   }
   
   //success navigate
   const navigate = useNavigate();
@@ -78,7 +81,10 @@ const SignUp = () => {
                     required=""
                   />
                 </div>
-            
+                <p className="text-sm font-medium text-red-500 hover:underline ">
+                  {signUpError}
+                </p>
+                
                 <input
                   type="submit"
                   value="submit"
@@ -86,7 +92,7 @@ const SignUp = () => {
                 />
 
                 <p className="">
-                  Don’t have an account yet?{" "}
+                  Have an account?{" "}
                   <Link
                     to="/signin"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"

@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import img from '../assets/discount.png'
 
 const ShopNow = () => {
@@ -13,9 +14,9 @@ const ShopNow = () => {
               <p className="discount__description">
                 Get it now, up to 50% off.
               </p>
-              <a href="products" className="button button--flex">
+              <Link to="/products" className="button button--flex">
                 <i className="ri-shopping-bag-line button__icon"></i> Shop Now
-              </a>
+              </Link>
             </div>
 
             <img src={img} alt="" className="discount__img" />

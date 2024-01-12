@@ -1,35 +1,34 @@
+import "./App.css";
+import Navbar from "./components/Nabar";
 
-import './App.css'
-import Navbar from './components/Nabar';
-
-import { Route, Routes } from 'react-router-dom';
-import SignIn from './components/function/Authentication/SignIn';
-import Home from './components/Home';
-import SignUp from './components/function/Authentication/SignUp';
-import BuyNow from './components/function/shopNow/BuyNow';
-import Products from './components/function/products/Products';
-import WelcomeForOrder from './components/function/welcome/WelcomeForOrder';
-import MyOrder from './components/function/myorder/MyOrder';
-import PostReview from './components/function/reviews/PostReview';
-import ThanksForReview from './components/function/reviews/ThanksForReview';
-import AddProduct from './components/function/addproduct/AddProduct';
-import SuccessFullyAdded from './components/function/addproduct/SuccessFullyAdded';
-import ManageProducts from './components/function/manageproducts/ManageProducts';
-import AllProducts from './components/function/allproducts/AllProducts';
-import MyProfile from './components/function/myprofile/MyProfile';
-import Payment from './components/function/payment/Payment';
-import AllUser from './components/function/Admin/AllUser';
-import RequireAuth from './components/function/Authentication/RequireAuth';
-
+import { Route, Routes } from "react-router-dom";
+import SignIn from "./components/function/Authentication/SignIn";
+import Home from "./components/Home";
+import SignUp from "./components/function/Authentication/SignUp";
+import BuyNow from "./components/function/shopNow/BuyNow";
+import Products from "./components/function/products/Products";
+import WelcomeForOrder from "./components/function/welcome/WelcomeForOrder";
+import MyOrder from "./components/function/myorder/MyOrder";
+import PostReview from "./components/function/reviews/PostReview";
+import ThanksForReview from "./components/function/reviews/ThanksForReview";
+import AddProduct from "./components/function/addproduct/AddProduct";
+import SuccessFullyAdded from "./components/function/addproduct/SuccessFullyAdded";
+import ManageProducts from "./components/function/manageproducts/ManageProducts";
+import AllProducts from "./components/function/allproducts/AllProducts";
+import MyProfile from "./components/function/myprofile/MyProfile";
+import Payment from "./components/function/payment/Payment";
+import AllUser from "./components/function/Admin/AllUser";
+import RequireAuth from "./components/function/Authentication/RequireAuth";
+import Blogs from "./components/Blogs";
 
 function App() {
-
-
   return (
     <div className="">
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/products" element={<AllProducts />}></Route>
+        <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/manageproducts" element={<ManageProducts />}></Route>
         <Route
           path="/myorder"
@@ -73,4 +72,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

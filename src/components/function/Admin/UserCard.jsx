@@ -14,7 +14,7 @@ const UserCard = ({ user, refetch }) => {
     })
       .then((res) => {
         if (res.status === 403) {
-          console.log("soryyy must be admin");
+          
         }
 
         return res.json();
@@ -26,10 +26,10 @@ const UserCard = ({ user, refetch }) => {
       });
   };
   return (
-    <div className="bg p-5 flex  justify-around ">
+    <div className="bg p-5 grid lg:grid-cols-3 justify-center  gap-4 ">
       <h1 className="text-2xl">{email}</h1>
-      <div className="">
-        <MdDelete className="text-red-500 text-2xl"></MdDelete>
+      <div className="flex justify-center ">
+        <MdDelete className="text-red-500 text-5xl bg-black p-2 rounded-full"></MdDelete>
       </div>
 
       {role !== "admin" && (

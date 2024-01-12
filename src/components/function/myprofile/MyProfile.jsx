@@ -14,9 +14,18 @@ const MyProfile = () => {
     
     return (
       <div className="py-16">
-        <h2 className="section__title section__title-gradient products__line">
-          Your <br /> Profile
-        </h2>
+        {!admin && (
+          <h2 className="section__title section__title-gradient products__line">
+            User <br /> Dashboard
+          </h2>
+        )}
+
+        {admin && (
+          <h2 className="section__title section__title-gradient products__line">
+            Admin <br /> Dashboard
+          </h2>
+        )}
+
         <div className="grid lg:grid-cols-3 container gap-5">
           <div className="bg p-5 rounded-xl">
             <h1 className="text-2xl">Hi, </h1>
@@ -45,14 +54,14 @@ const MyProfile = () => {
             </Link>
           </div>
 
-          { admin && (
+          {admin && (
             <>
               <div className="bg p-5 rounded-xl">
                 <h1 className="text-2xl">Explore</h1>
                 <h1 className="text-2xl"> Make Admin </h1>
                 <p className="py-2">Happy Shoping</p>
                 <Link to="/users" className="button button--flex text-xl">
-                  <GrUpdate /> Manage Products
+                  <GrUpdate /> Manage User
                 </Link>
               </div>
               <div className="bg p-5 rounded-xl">

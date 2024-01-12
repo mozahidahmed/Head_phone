@@ -27,11 +27,11 @@ const Navbar = () => {
                 <Link to="/products" className="nav__item">
                   <p className="nav__link active-link">Products</p>
                 </Link>
-                <li className="nav__item">
-                  <p href="#case" className="nav__link active-link">
+                <Link to='/blogs' className="nav__item">
+                  <p  className="nav__link active-link">
                     Blogs
                   </p>
-                </li>
+                </Link>
 
                 {user ? (
                   <>

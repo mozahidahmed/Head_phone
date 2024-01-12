@@ -11,7 +11,7 @@ const Company = () => {
         <div className="sponsor section">
           <div className="sponsor__container container grid">
             <img src={img1} alt="" className="sponsor__img" />
-            <img src={img2} alt="" className="sponsor__img" />
+            <img src={img2} alt="" className="sponsor__img " />
             <img src={img3} alt="" className="sponsor__img" />
             <img src={img4} alt="" className="sponsor__img" />
           </div>
