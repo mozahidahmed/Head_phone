@@ -9,7 +9,7 @@ const PostReview = () => {
 
     const order = {
       name: event.target.name.value,
-      review: event.target.review.value,
+      messege: event.target.review.value,
     };
 
     fetch("https://mozababa.onrender.com/reviews", {
